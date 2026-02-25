@@ -1,28 +1,24 @@
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 /**
- * Use Case 6: Queue Stack Fairness Check
- * Description: This class demonstrates palindrome validation using
- * two different data structures: Queue (FIFO) and Stack (LIFO).
+ * Use Case 7: Deque Based Optimized Palindrome Checker
+ * Description: This class validates a palindrome using a Deque.
  * @author hh9554
- * @version 6.0
+ * @version 7.0
  */
 public class PalindromeCheckerApp {
     public static void main(String[] args) {
-        String input = "civic";
-        Queue<Character> queue = new LinkedList<>();
-        Stack<Character> stack = new Stack<>();
+        String input = "refer";
+        Deque<Character> deque = new ArrayDeque<>();
 
         for (char c : input.toCharArray()) {
-            queue.add(c);
-            stack.push(c);
+            deque.addLast(c);
         }
 
         boolean isPalindrome = true;
-        while (!queue.isEmpty()) {
-            if (queue.remove() != stack.pop()) {
+        while (deque.size() > 1) {
+            if (deque.removeFirst() != deque.removeLast()) {
                 isPalindrome = false;
                 break;
             }
