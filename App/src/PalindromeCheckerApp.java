@@ -1,21 +1,33 @@
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
+
 /**
- * Use Case 5: Stack Based Palindrome Checker
- * @author Developer
- * @version 5.8
+ * Use Case 6: Queue Stack Fairness Check
+ * Description: This class demonstrates palindrome validation using
+ * two different data structures: Queue (FIFO) and Stack (LIFO).
+ * @author hh9554
+ * @version 6.0
  */
 public class PalindromeCheckerApp {
     public static void main(String[] args) {
-        String input = "noon";
+        String input = "civic";
+        Queue<Character> queue = new LinkedList<>();
         Stack<Character> stack = new Stack<>();
-        for (char c : input.toCharArray()) { stack.push(c); }
-        boolean isPalindrome = true;
+
         for (char c : input.toCharArray()) {
-            if (c != stack.pop()) {
+            queue.add(c);
+            stack.push(c);
+        }
+
+        boolean isPalindrome = true;
+        while (!queue.isEmpty()) {
+            if (queue.remove() != stack.pop()) {
                 isPalindrome = false;
                 break;
             }
         }
+
         System.out.println("Input: " + input);
         System.out.println("Is Palindrome?: " + isPalindrome);
     }
