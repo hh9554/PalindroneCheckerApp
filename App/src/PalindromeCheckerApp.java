@@ -1,29 +1,34 @@
 /**
- * Use Case 10: Normalized Palindrome Validation
- * Description: This class validates a palindrome after preprocessing the input string.
- * Normalization includes: Removing spaces and symbols, Converting to lowercase.
- * This ensures the palindrome check is logical rather than character-format dependent.
- * Example: A man a plan a canal Panama
+ * Use Case 11: Object-Oriented Palindrome Service
+ * Description: Demonstrates palindrome validation using object-oriented principles.
+ * Encapsulates the logic in a PalindromeService class.
  * @author hh9554
- * @version 10.0
+ * @version 11.0
  */
 public class PalindromeCheckerApp {
     public static void main(String[] args) {
-        String input = "A man a plan a canal Panama";
+        String input = "racecar";
 
-        // Remove everything except letters and numbers, then convert to lowercase
-        String normalized = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
-        boolean isPalindrome = true;
-
-        // Compare characters from both ends
-        for (int i = 0; i < normalized.length() / 2; i++) {
-            if (normalized.charAt(i) != normalized.charAt(normalized.length() - 1 - i)) {
-                isPalindrome = false;
-                break;
-            }
-        }
+        // Instantiate the service class
+        PalindromeService service = new PalindromeService();
+        boolean isPalindrome = service.checkPalindrome(input);
 
         System.out.println("Input: " + input);
         System.out.println("Is Palindrome?: " + isPalindrome);
+    }
+}
+
+class PalindromeService {
+    public boolean checkPalindrome(String input) {
+        int start = 0;
+        int end = input.length() - 1;
+        while (start < end) {
+            if (input.charAt(start) != input.charAt(end)) {
+                return false;
+            }
+            start++;
+            end--;
+        }
+        return true;
     }
 }
