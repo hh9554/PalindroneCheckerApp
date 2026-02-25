@@ -1,19 +1,17 @@
 /**
- * Use Case 2: Hardcoded Palindrome Validation
+ * Use Case 3: Reverse String Based Palindrome Check
  * @author Developer
- * @version 2.0
+ * @version 3.0
  */
 public class PalindromeCheckerApp {
     public static void main(String[] args) {
-        String input = "madam";
-        boolean isPalindrome = true;
-        for (int i = 0; i < input.length() / 2; i++) {
-            if (input.charAt(i) != input.charAt(input.length() - 1 - i)) {
-                isPalindrome = false;
-                break;
-            }
+        String input = "radar";
+        String reversed = "";
+        for (int i = input.length() - 1; i >= 0; i--) {
+            reversed += input.charAt(i);
         }
-        System.out.println("Input text: " + input);
-        System.out.println("Is it a Palindrome?: " + isPalindrome);
+        boolean isPalindrome = input.equals(reversed);
+        System.out.println("Input: " + input);
+        System.out.println("Is Palindrome?: " + isPalindrome);
     }
 }
